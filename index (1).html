@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NetAI — Network Audit Console</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="logo">
+    <div class="logo-icon">⬡</div>
+    NETAI
+  </div>
+  <div class="topbar-right">
+    <div class="status-dot"></div>
+    <span>OFFLINE MODE</span>
+    <span class="divider">|</span>
+    <span id="clock">--:--:--</span>
+  </div>
+</div>
+
+<!-- LAYOUT -->
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-label">Cargar Configuración</div>
+      <div class="upload-zone" id="uploadZone">
+        <input type="file" id="fileInput" accept=".json,.txt,.cfg" multiple>
+        <div class="upload-icon">📂</div>
+        <p>Arrastra un <span>running-config</span> o <span>network_db.json</span><br>o haz clic para seleccionar</p>
+      </div>
+      <button class="btn" id="loadBtn">▶ Cargar Inventario Demo</button>
+    </div>
+
+    <div class="sidebar-section" style="padding-bottom:8px;">
+      <div class="sidebar-label">Dispositivos (<span id="deviceCount">0</span>)</div>
+    </div>
+
+    <div class="device-list" id="deviceList">
+      <!-- Ticket 3: app.js puebla esta lista -->
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <div class="main">
+    <div class="empty-state" id="emptyState">
+      <div class="big-icon">🛰️</div>
+      <h2>ESPERANDO DATOS</h2>
+      <p>Carga un inventario o sube un archivo de configuración Cisco para iniciar la auditoría.</p>
+    </div>
+
+    <!-- Ticket 5: app.js inyecta el reporte aquí -->
+    <div class="report-panel" id="reportPanel"></div>
+
+    <div class="terminal" id="terminal">
+      <div class="log-line">
+        <span class="ts">[00:00:00]</span>
+        <span class="msg-info">NetAI v1.0 — sistema listo. Modo offline activo.</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
