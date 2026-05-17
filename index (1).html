@@ -22,7 +22,7 @@
   </div>
 </div>
 
-<!-- LAYOUT -->
+<!-- LAYOUT: sidebar | main | chat -->
 <div class="layout">
 
   <!-- SIDEBAR -->
@@ -41,12 +41,10 @@
       <div class="sidebar-label">Dispositivos (<span id="deviceCount">0</span>)</div>
     </div>
 
-    <div class="device-list" id="deviceList">
-      <!-- Ticket 3: app.js puebla esta lista -->
-    </div>
+    <div class="device-list" id="deviceList"></div>
   </div>
 
-  <!-- MAIN -->
+  <!-- MAIN: reporte -->
   <div class="main">
     <div class="empty-state" id="emptyState">
       <div class="big-icon">🛰️</div>
@@ -54,14 +52,45 @@
       <p>Carga un inventario o sube un archivo de configuración Cisco para iniciar la auditoría.</p>
     </div>
 
-    <!-- Ticket 5: app.js inyecta el reporte aquí -->
     <div class="report-panel" id="reportPanel"></div>
 
     <div class="terminal" id="terminal">
       <div class="log-line">
         <span class="ts">[00:00:00]</span>
-        <span class="msg-info">NetAI v1.0 — sistema listo. Modo offline activo.</span>
+        <span class="msg-info">NetAI v2.0 — sistema listo. Modo offline activo.</span>
       </div>
+    </div>
+  </div>
+
+  <!-- CHAT PANEL -->
+  <div class="chat-panel">
+    <div class="chat-header">
+      <div class="chat-title">
+        <span class="chat-icon">🤖</span>
+        NetAI Chat
+        <span class="chat-subtitle">IA on-device</span>
+      </div>
+      <div class="ai-controls">
+        <span id="aiStatus" class="ai-status idle">⚪ Modelo no cargado</span>
+        <button id="loadAiBtn" class="btn-ai">🤖 Cargar IA</button>
+      </div>
+    </div>
+
+    <div class="chat-messages" id="chatMessages">
+      <div class="chat-msg chat-assistant">
+        <span class="chat-bubble">Hola, soy NetAI. Puedo ayudarte con tus configs de Cisco o cualquier otra pregunta. Primero carga el modelo con el botón de arriba.</span>
+      </div>
+    </div>
+
+    <div class="chat-input-row">
+      <input
+        type="text"
+        id="chatInput"
+        class="chat-input"
+        placeholder="Pregunta sobre Cisco, recetas, viajes..."
+        autocomplete="off"
+      />
+      <button id="sendBtn" class="btn-send">➤</button>
     </div>
   </div>
 
