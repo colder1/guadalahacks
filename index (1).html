@@ -22,10 +22,10 @@
   </div>
 </div>
 
-<!-- LAYOUT: sidebar | main | chat -->
+<!-- LAYOUT: sidebar | main | chat-history | chat -->
 <div class="layout">
 
-  <!-- SIDEBAR -->
+  <!-- SIDEBAR (Dispositivos) -->
   <div class="sidebar">
     <div class="sidebar-section">
       <div class="sidebar-label">Cargar Configuración</div>
@@ -57,8 +57,19 @@
     <div class="terminal" id="terminal">
       <div class="log-line">
         <span class="ts">[00:00:00]</span>
-        <span class="msg-info">NetAI v2.0 — sistema listo. Modo offline activo.</span>
+        <span class="msg-info">NetAI v2.1 — sistema listo. Historial de chats y adjuntos activos.</span>
       </div>
+    </div>
+  </div>
+
+  <!-- CHAT HISTORY PANEL -->
+  <div class="chat-history-panel">
+    <div class="ch-header">
+      <span class="ch-title">💬 Chats</span>
+      <button class="btn-new-chat" id="newChatBtn" title="Nuevo chat">＋ Nuevo</button>
+    </div>
+    <div class="ch-list" id="chatHistoryList">
+      <div class="ch-empty">No hay chats aún.<br>Inicia una conversación.</div>
     </div>
   </div>
 
@@ -67,7 +78,7 @@
     <div class="chat-header">
       <div class="chat-title">
         <span class="chat-icon">🤖</span>
-        NetAI Chat
+        <span id="chatTitleDisplay">NetAI Chat</span>
         <span class="chat-subtitle">IA on-device</span>
       </div>
       <div class="ai-controls">
@@ -78,16 +89,25 @@
 
     <div class="chat-messages" id="chatMessages">
       <div class="chat-msg chat-assistant">
-        <span class="chat-bubble">Hola, soy NetAI. Puedo ayudarte con tus configs de Cisco o cualquier otra pregunta. Primero carga el modelo con el botón de arriba.</span>
+        <span class="chat-bubble">Hola, soy NetAI. Puedo analizar configs Cisco, responder sobre la base de datos cargada, leer documentos e imágenes que adjuntes. Primero carga el modelo con el botón de arriba.</span>
       </div>
     </div>
 
+    <!-- Área de adjuntos pendientes -->
+    <div class="attachments-preview" id="attachmentsPreview" style="display:none;"></div>
+
     <div class="chat-input-row">
+      <!-- Botón adjuntar -->
+      <label class="btn-attach" title="Adjuntar archivo (imagen, PDF, texto, video...)">
+        📎
+        <input type="file" id="chatFileInput" accept="image/*,.pdf,.txt,.csv,.json,.cfg,.md,video/*,audio/*" multiple style="display:none;">
+      </label>
+
       <input
         type="text"
         id="chatInput"
         class="chat-input"
-        placeholder="Pregunta sobre Cisco, recetas, viajes..."
+        placeholder="Pregunta sobre configs, base de datos, adjuntos..."
         autocomplete="off"
       />
       <button id="sendBtn" class="btn-send">➤</button>
